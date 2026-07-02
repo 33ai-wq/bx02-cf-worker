@@ -1,6 +1,7 @@
 name = "bx02-cf-worker"
 main = "src/index.ts"
 compatibility_date = "2024-01-01"
+account_id = "b9f2219c5fc157dbab0250ea33e19e52"
 
 [site]
 bucket = "./dist"
