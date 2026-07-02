@@ -1,0 +1,30 @@
+name: Deploy Bx02 Worker
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install + Build
+        run: |
+          npm install
+          npx esbuild src/index.ts --bundle --outfile=dist/index.js --platform=neutral --target=chrome88 --format=esm
+
+      - name: Deploy to Cloudflare Workers
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: b9f2219c5fc157dbab0250ea33e19e52
+          command: deploy --name bx02-cf-worker --no-bundle
+        env:
+          NODE_ENV: production
