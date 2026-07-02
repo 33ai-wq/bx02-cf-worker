@@ -1,0 +1,16 @@
+{
+  "name": "bx02-cf-worker",
+  "version": "1.0.0",
+  "description": "Bx02 - GitHub Contribution Automation API via x402 protocol. $1.50/call USDC.",
+  "main": "src/index.ts",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "wrangler": "^4.106.0",
+    "typescript": "^5.0.0",
+    "@cloudflare/workers-types": "^4.20241127.0"
+  }
+}
